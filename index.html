@@ -229,6 +229,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/python基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cjy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cjy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/09/python基础/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-09T21:21:34+08:00">
+                2019-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#python语法基础<br>r’’表示内部字符串不转义<br>‘’’   ‘’’表示多行<br>and or<br>not  //！<br>None</p>
+<p>###变量<br>变量必须是大小写英文 数学和_的组合切不能用数字开头.<br>a=123 a=’ABC’ //变量<br>/与//   地板除得到整数</p>
+<p>###编码<br>计算机内存中，统一使用的是Unicode编码，保存到硬盘或需要传输的时候，就转换为UTF-8编码。</p>
+<p>###字符串<br>ord(‘A’) chr(66)<br>py字符串是Unicode编码的<br>1个英文字符 UTF-8占3个字节</p>
+<p>###格式化<br>与c语言一致,%s字符串,%d整数,<br>%f浮点数<br>%x 十六进制整数<br>print( ‘%f’ %(3.1415926))</p>
+<h3 id="list与tuple"><a href="#list与tuple" class="headerlink" title="list与tuple"></a>list与tuple</h3><p>list里的数据类型可以不同，也可以是list<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">classmate=[&apos;Mich&apos;,&apos;Bob&apos;,&apos;Tracy&apos;]</span><br><span class="line">print(len(classmate))</span><br><span class="line">print(classmate[-1]) #倒数第一个</span><br><span class="line">print(classmate.insert(1,&apos;Jack&apos;)) #添加</span><br><span class="line">classmate.pop(0)</span><br><span class="line"></span><br><span class="line">print((classmate))</span><br></pre></td></tr></table></figure></p>
+<p>tuple不可变。<br>tuple定义1个元素(1,) /消除歧义<br>tuple中的list可以改变</p>
+<p>###条件判断<br>if:<br>else:  注意冒号</p>
+<p>###循坏<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#第一种</span><br><span class="line">names=[&apos;Michale&apos;,&apos;Bob&apos;,&apos;Tracy&apos;]</span><br><span class="line">for name in names:</span><br><span class="line">    print(name)</span><br><span class="line"></span><br><span class="line">#第二种 while break continue</span><br></pre></td></tr></table></figure></p>
+<p>###dict和set</p>
+<p>####dict<br>字典 dictionary,在其他语言称为键值对(map)<br>list不能作为key key是可变的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d=&#123;&apos;Mic&apos;:95,&apos;Bob&apos;:75,&apos; Tracy&apos;:85&#125;</span><br><span class="line">print(d[&apos;Mic&apos;])</span><br><span class="line">d[&apos;Adam&apos;]=67  #插s=入</span><br><span class="line">print(d.get(&apos;Mtt&apos;,-1))</span><br><span class="line">d.pop(&apos;Bob&apos;)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure></p>
+<p>###set<br>set没有存储value </p>
+<p>###调用函数<br>函数名其实就是指向一个函数对象的引用，完全可以把函数名赋给一个变量，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=abs</span><br><span class="line">print(a(-1))</span><br></pre></td></tr></table></figure></p>
+<p>###定义函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def my_abs(x):</span><br><span class="line">    if not isinstance(x,(int,float)):</span><br><span class="line">        raise TypeError(&apos;bad operand type&apos;)</span><br><span class="line">    if x&gt;=0:</span><br><span class="line">        return x</span><br><span class="line">    else:</span><br><span class="line">        return -x</span><br><span class="line"></span><br><span class="line"> # pass语句</span><br><span class="line">def nop():</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">age=19</span><br><span class="line">if age&gt;=18:</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure></p>
+<p>返回多个值，实际上是返回一个tuple<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import math</span><br><span class="line"></span><br><span class="line">def move(x, y, step, angle=0):</span><br><span class="line">    nx = x + step * math.cos(angle)</span><br><span class="line">    ny = y - step * math.sin(angle)</span><br><span class="line">    return nx, ny</span><br><span class="line"></span><br><span class="line">    x, y = move(100, 100, 60, math.pi / 6)</span><br></pre></td></tr></table></figure></p>
+<p>函数的默认参数<br>参数上赋值就行。</p>
+<p>函数的参数一定要用不可变对象 ,list不行！</p>
+<p>###可变参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def calc(*numbers):</span><br><span class="line">    sum=0</span><br><span class="line">    for n in numbers:</span><br><span class="line">        sum=sum+n*n</span><br><span class="line"></span><br><span class="line">    return sum</span><br><span class="line"></span><br><span class="line">nums=[5,6]</span><br><span class="line"> calc(5,6)</span><br><span class="line">print( calc(*nums))</span><br></pre></td></tr></table></figure></p>
+<p>###关键字参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def person(name, age, **kw):</span><br><span class="line">    if &apos;city&apos; in kw:</span><br><span class="line">        # 有city参数</span><br><span class="line">        pass</span><br><span class="line">    if &apos;job&apos; in kw:</span><br><span class="line">        # 有job参数</span><br><span class="line">        pass</span><br><span class="line">    print(&apos;name:&apos;, name, &apos;age:&apos;, age, &apos;other:&apos;, kw)</span><br></pre></td></tr></table></figure></p>
+<p>###命名关键字参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def person(name, age, *, city, job):</span><br><span class="line">    print(name, age, city, job)</span><br><span class="line"></span><br><span class="line">person(&apos;Jack&apos;, 24, city=&apos;Beijing&apos;, job=&apos;Engineer&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>技巧：<br>在函数调用的时候，Python解释器自动按照参数位置和参数名把对应的参数传进去。<br>对于任意函数，都可以通过类似func(*args, **kw)的形式调用它，无论它的参数是如何定义的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/03/git命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -433,11 +573,19 @@
 <p>同一组radio name要一致。<br><code>&lt;select&gt; &lt;option value=&quot;&quot;selected=&quot;selected&gt; 看书&lt;/option&gt; &lt;/select&gt;</code><br>multiple=”multiple”让select多选 ctrl+单击</p>
 <p><label for="控件id">当用户单击选中该label标签时，浏览器就会自动将焦点转到和标签相关的表单控件上（就自动选中和该label标签相关连的表单控件上）</label></p>
 <h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CSS样式代码分为： 内联式、嵌入式和外部式三种</span><br><span class="line">`&lt;link href=&quot;style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;`</span><br><span class="line">优先级 :  内联式 &gt; 嵌入式 &gt; 外部式</span><br></pre></td></tr></table></figure>
-<p>####选择器<br>标签选择器<br>类选择器(class) <code>xxx.{}</code><br>ID选择器 (id) <code>#xxx{}</code><br>子选择器 <code>.food&gt;li{ border:1px solid red;}</code> //  &gt;表示  直接后代<br>包含（后代）选择器<code>.first span{color:red}</code> //全部后代  空格表示<br>通用选择器 *{}<br>伪类选择符 a:hover{}<br>分组选择器  h1,span{}</p>
-<p>####继承<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有的属性不能被继承 如p&#123;&#125;  &lt;p&gt;&lt;span&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
-<p>####特殊性 层叠<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">标签的权值为1 类选择器的权值为10 ID选择符的权值最高为100. 相同权重值时，后面的会覆盖前面的</span><br><span class="line">p&#123;color:red!important;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>####文字排版<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">font-size:20px  font-family:&quot;宋体&quot;</span><br><span class="line">font-style:italic 斜体</span><br><span class="line">text-decoration:underline 下划线</span><br><span class="line">text-decoration:line-through 删除线 </span><br><span class="line">text-indent:2em  缩进 2em 文字的2倍大小 </span><br><span class="line">line-height:1.5em   //行距</span><br><span class="line">letter-spacing：50px //文字间距或字母间距</span><br><span class="line">word-spacing  // 英文单词  间距</span><br><span class="line">text-align:center //对齐</span><br></pre></td></tr></table></figure></p>
-<p>####盒模型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">css中 将html标签元素分为三类：块状元素、内联元素（行内元素）、内敛块状元素。</span><br><span class="line">常用的块状元素有：</span><br><span class="line">&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;...&lt;h6&gt;、&lt;ol&gt;、&lt;ul&gt;、&lt;dl&gt;、&lt;table&gt;、&lt;address&gt;、&lt;blockquote&gt; 、&lt;form&gt;</span><br><span class="line">常用的内联元素有：</span><br><span class="line">&lt;a&gt;、&lt;span&gt;、&lt;br&gt;、&lt;i&gt;、&lt;em&gt;、&lt;strong&gt;、&lt;label&gt;、&lt;q&gt;、&lt;var&gt;、&lt;cite&gt;、&lt;code&gt;</span><br><span class="line">常用的内联块状元素有：</span><br><span class="line">&lt;img&gt;、&lt;input&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><p>标签选择器<br>类选择器(class) <code>xxx.{}</code><br>ID选择器 (id) <code>#xxx{}</code><br>子选择器 <code>.food&gt;li{ border:1px solid red;}</code> //  &gt;表示  直接后代<br>包含（后代）选择器<code>.first span{color:red}</code> //全部后代  空格表示<br>通用选择器 *{}<br>伪类选择符 a:hover{}<br>分组选择器  h1,span{}</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有的属性不能被继承 如p&#123;&#125;  &lt;p&gt;&lt;span&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="特殊性-层叠"><a href="#特殊性-层叠" class="headerlink" title="特殊性 层叠"></a>特殊性 层叠</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">标签的权值为1 类选择器的权值为10 ID选择符的权值最高为100. 相同权重值时，后面的会覆盖前面的</span><br><span class="line">p&#123;color:red!important;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="文字排版"><a href="#文字排版" class="headerlink" title="文字排版"></a>文字排版</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">font-size:20px  font-family:&quot;宋体&quot;</span><br><span class="line">font-style:italic 斜体</span><br><span class="line">text-decoration:underline 下划线</span><br><span class="line">text-decoration:line-through 删除线 </span><br><span class="line">text-indent:2em  缩进 2em 文字的2倍大小 </span><br><span class="line">line-height:1.5em   //行距</span><br><span class="line">letter-spacing：50px //文字间距或字母间距</span><br><span class="line">word-spacing  // 英文单词  间距</span><br><span class="line">text-align:center //对齐</span><br></pre></td></tr></table></figure>
+<h4 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h4><h6 id="元素分类"><a href="#元素分类" class="headerlink" title="元素分类"></a>元素分类</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">css中 将html标签元素分为三类：块状元素、内联元素（行内元素）、内敛块状元素。</span><br><span class="line">常用的块状元素有：</span><br><span class="line">&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;...&lt;h6&gt;、&lt;ol&gt;、&lt;ul&gt;、&lt;dl&gt;、&lt;table&gt;、&lt;address&gt;、&lt;blockquote&gt; 、&lt;form&gt;</span><br><span class="line">常用的内联元素有：</span><br><span class="line">&lt;a&gt;、&lt;span&gt;、&lt;br&gt;、&lt;i&gt;、&lt;em&gt;、&lt;strong&gt;、&lt;label&gt;、&lt;q&gt;、&lt;var&gt;、&lt;cite&gt;、&lt;code&gt;</span><br><span class="line">常用的内联块状元素有：</span><br><span class="line">&lt;img&gt;、&lt;input&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a&#123;display:block;&#125; //将内联元素a 转换为块状元素</span><br><span class="line">块级元素特点：</span><br><span class="line"></span><br><span class="line">1、每个块级元素都从新的一行开始，并且其后的元素也另起一行。（真霸道，一个块级元素独占一行）</span><br><span class="line"></span><br><span class="line">2、元素的高度、宽度、行高以及顶和底边距都可设置。</span><br><span class="line"></span><br><span class="line">3、元素宽度在不设置的情况下，是它本身父容器的100%（和父元素的宽度一致），除非设定一个宽度。</span><br></pre></td></tr></table></figure>
+<h6 id="内联元素"><a href="#内联元素" class="headerlink" title="内联元素"></a>内联元素</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">div&#123;display:inline&#125; //设置成内联元素</span><br><span class="line">内联元素特点：</span><br><span class="line"></span><br><span class="line">1、和其他元素都在一行上；</span><br><span class="line"></span><br><span class="line">2、元素的高度、宽度及顶部和底部边距不可设置；</span><br><span class="line"></span><br><span class="line">3、元素的宽度就是它包含的文字或图片的宽度，不可改变。</span><br><span class="line"></span><br><span class="line">小伙伴们你们观查一下右侧代码段，有没有发现一个问题，内联元素之间有一个间距问题，这个问题在本小节的 wiki 中有介绍，感兴趣的小伙伴可以去查看。</span><br></pre></td></tr></table></figure>
+<h6 id="内联块状元素"><a href="#内联块状元素" class="headerlink" title="内联块状元素"></a>内联块状元素</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;display:inline-block&#125;</span><br><span class="line">同时具备内联元素，块状元素的特点</span><br></pre></td></tr></table></figure>
+<h6 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">块级标签，比如&lt;div&gt;&lt;ul&gt;&lt;ol&gt;&lt;p&gt;&lt;h&gt;&lt;table&gt;，都具有盒子模型的特征。</span><br><span class="line"></span><br><span class="line">边框border</span><br><span class="line">div&#123;border:2px solid red&#125;可写成</span><br><span class="line">div&#123;</span><br><span class="line">    border-width:2px;</span><br><span class="line">    border-style:solid;</span><br><span class="line">    border-color:red;</span><br><span class="line">&#125;</span><br><span class="line">border-style常见样式有dashed(虚线) dotted(点线)solid(实线)</span><br><span class="line">可以只给一边设置 eg:border-bottom</span><br><span class="line"></span><br><span class="line">内容与边框之间 称为填充 padding</span><br><span class="line">div&#123;padding:20px 10px 15px 30px&#125; 上右下左</span><br><span class="line">或写成</span><br><span class="line">div&#123;</span><br><span class="line">   padding-top:20px;</span><br><span class="line">   padding-right:10px;</span><br><span class="line">   padding-bottom:15px;</span><br><span class="line">   padding-left:30px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">边界 margin</span><br><span class="line">总结：padding在边框里，margin在边框外。</span><br></pre></td></tr></table></figure>
+<p>####CSS布局模型<br>Flow流动、Layer浮动 和 Float层模型</p>
+<p>#####流动模型</p>
+<p>#####浮动模型</p>
+<p>#####层模型</p>
 
           
         
@@ -642,7 +790,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
