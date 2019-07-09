@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="css1：1的div1234.one&amp;#123;    border:1px solid red    padding-top: 100%   // 相对的是自己得宽度&amp;#125; BFCdisplay: flow-root  /  创建BFC   / 1个BFC中的 块级元素  竖直的margin会合并 爷爷管爸爸  爸爸管儿子的话  爷爷就不管儿子了 功能  用BFC包住浮动元素 。包裹 子元">
+<meta name="description" content="html对语义化的理解？css1：1的div1234.one&amp;#123;    border:1px solid red    padding-top: 100%   // 相对的是自己得宽度&amp;#125; CSS实现三角形.triangle{ ​    width:0;​    height:0;    border-right: 100px solid yellow;    border-lef">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试常见问题.md">
 <meta property="og:url" content="http://yoursite.com/2019/05/16/面试常见问题-md/index.html">
 <meta property="og:site_name" content="cjy">
-<meta property="og:description" content="css1：1的div1234.one&amp;#123;    border:1px solid red    padding-top: 100%   // 相对的是自己得宽度&amp;#125; BFCdisplay: flow-root  /  创建BFC   / 1个BFC中的 块级元素  竖直的margin会合并 爷爷管爸爸  爸爸管儿子的话  爷爷就不管儿子了 功能  用BFC包住浮动元素 。包裹 子元">
+<meta property="og:description" content="html对语义化的理解？css1：1的div1234.one&amp;#123;    border:1px solid red    padding-top: 100%   // 相对的是自己得宽度&amp;#125; CSS实现三角形.triangle{ ​    width:0;​    height:0;    border-right: 100px solid yellow;    border-lef">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-16T12:34:55.746Z">
+<meta property="og:updated_time" content="2019-07-07T14:38:56.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试常见问题.md">
-<meta name="twitter:description" content="css1：1的div1234.one&amp;#123;    border:1px solid red    padding-top: 100%   // 相对的是自己得宽度&amp;#125; BFCdisplay: flow-root  /  创建BFC   / 1个BFC中的 块级元素  竖直的margin会合并 爷爷管爸爸  爸爸管儿子的话  爷爷就不管儿子了 功能  用BFC包住浮动元素 。包裹 子元">
+<meta name="twitter:description" content="html对语义化的理解？css1：1的div1234.one&amp;#123;    border:1px solid red    padding-top: 100%   // 相对的是自己得宽度&amp;#125; CSS实现三角形.triangle{ ​    width:0;​    height:0;    border-right: 100px solid yellow;    border-lef">
 
 
 
@@ -299,21 +299,50 @@
       
 
       
-        <h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><h2 id="1：1的div"><a href="#1：1的div" class="headerlink" title="1：1的div"></a>1：1的div</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.one&#123;</span><br><span class="line">    border:1px solid red</span><br><span class="line">    padding-top: 100%   // 相对的是自己得宽度</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>display: flow-root  /<em>  创建BFC   </em>/</p>
+        <h1 id="html"><a href="#html" class="headerlink" title="html"></a>html</h1><h2 id="对语义化的理解？"><a href="#对语义化的理解？" class="headerlink" title="对语义化的理解？"></a>对语义化的理解？</h2><h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><h2 id="1：1的div"><a href="#1：1的div" class="headerlink" title="1：1的div"></a>1：1的div</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.one&#123;</span><br><span class="line">    border:1px solid red</span><br><span class="line">    padding-top: 100%   // 相对的是自己得宽度</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CSS实现三角形"><a href="#CSS实现三角形" class="headerlink" title="CSS实现三角形"></a>CSS实现三角形</h2><p>.triangle{</p>
+<p>​    width:0;<br>​    height:0;</p>
+<p>   border-right: 100px solid yellow;</p>
+<p>   border-left: 100px solid yellow;</p>
+<p>   border-bottom: 100px solid yellow;</p>
+<p>   border-top: 100px solid yellow;</p>
+<p>}</p>
+<p>.triangle{<br>    width:0;<br>    height:0;</p>
+<p>   border-right: 100px solid yellow;<br>  border-top: 100px solid transparent;</p>
+<p>}</p>
+<h2 id="外边距合并"><a href="#外边距合并" class="headerlink" title="外边距合并"></a>外边距合并</h2><ol>
+<li>margin-bottom 与margin-top合并  只存在垂直方向上的合并</li>
+<li>相邻元素合并 </li>
+<li>父子元素合并，条件：父元素没有设置padding border  content</li>
+</ol>
+<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><ol>
+<li><p><strong>创建方法：</strong> </p>
+<ul>
+<li>根元素(html)  或包含它的元素</li>
+<li>overflow: hidden （不为visible都可以）</li>
+<li>float</li>
+<li>position absolute   fixed</li>
+<li>inline-blocks</li>
+<li>display:table-cell</li>
+<li>flex</li>
+<li>display: flow-root  /<em>  创建BFC   </em>/</li>
+</ul>
+<p><strong>2.范围</strong>： 中文的意思一个BFC包含创建该上下文元素的所有子元素，但不包括创建了新BFC的子元素的内部元素。</p>
+</li>
+</ol>
 <p>1个BFC中的 块级元素  竖直的margin会合并</p>
 <p>爷爷管爸爸  爸爸管儿子的话  爷爷就不管儿子了</p>
 <p>功能</p>
 <ol>
 <li><p>用BFC包住浮动元素 。包裹 子元素的floa</p>
 </li>
-<li><p>兄弟之间划清界限。</p>
+<li><p>兄弟之间划清界限。防止与浮动元素重叠</p>
 <p>用float+ div做左右自适应布局</p>
 </li>
 </ol>
 <h2 id="div的高度"><a href="#div的高度" class="headerlink" title="div的高度"></a>div的高度</h2><p>字体设计： 不同字体， 行高不同</p>
-<p>内联元素 高度由行高决定   宽度 ： 内容+padding+margin</p>
-<p> div元素高度 只有行内元素 =行高。</p>
+<p><strong>内联元素</strong> 高度由行高决定   宽度 ： 内容+padding+margin</p>
+<p> <strong>div元素高度</strong> 只有行内元素 =行高。</p>
 <p>​    宽度 自适应父元素</p>
 <p>div高度 文档流 高度总和 确定的</p>
 <h2 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h2><p>父元素添加</p>
@@ -344,8 +373,11 @@
 </li>
 <li><p>父元素高度确定</p>
 <ol>
-<li>父元素设置 display:flex   align-items:center</li>
-<li>父元素设置</li>
+<li><p>父元素设置 display:flex   align-items:center</p>
+</li>
+<li><p>父元素设置   display:table;</p>
+<p>元素</p>
+</li>
 </ol>
 <p>​         display:table-cell;</p>
 <p>​        vertical-align: middle;</p>
@@ -355,11 +387,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">position: absolute;</span><br><span class="line">     top:0; bottom:0 ; right:0; left:0;</span><br><span class="line">     margin: auto ;</span><br></pre></td></tr></table></figure>
 <ol start="4">
 <li><p>元素设置    </p>
-<p> 父元素 position:relative</p>
+<p>父元素 position:relative</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">position: absolute;</span><br><span class="line">       top: 50% ;</span><br><span class="line">       transform: translateY( -50%)</span><br><span class="line">       </span><br><span class="line">原理：translateY(-50%),向上移动自身高度的一半，结合top:50%,达到垂直居中的效果</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>父元素 positoin:relative  </p>
-<p> position: absolute</p>
+<p>position: absolute</p>
 <p>​    top:50%</p>
 <p>​    margin-top:   高度的一半</p>
 </li>
@@ -374,10 +406,26 @@
 <h2 id="两栏布局"><a href="#两栏布局" class="headerlink" title="两栏布局"></a>两栏布局</h2><p>左边宽度固定  右边自适应</p>
 <ol>
 <li>右边flex:1         body{  display:flex }</li>
-<li>float  :left          margin-left        父元素清除浮动</li>
+</ol>
+<ol start="2">
+<li>float  :left          margin-left       </li>
+</ol>
+<ol start="3">
 <li>float:left      overflow:autoi    形成BFC</li>
 </ol>
-<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1>
+<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><h2 id="转换机制"><a href="#转换机制" class="headerlink" title="==转换机制"></a>==转换机制</h2><h2 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h2><p>改变数组本来的方法   push pop shift unshift  sort splice reverse</p>
+<p>不改变数组本来的方法    some every  join   concat reduce filter  map  </p>
+<h2 id="for-of-for-in-区别"><a href="#for-of-for-in-区别" class="headerlink" title="for of for in 区别"></a>for of for in 区别</h2><ol>
+<li><p>for of  遍历的是值                 for in  是键</p>
+<ol start="2">
+<li><p>for  in  遍历数组  会遍历到它原本的属性  如 array.foo=3</p>
+</li>
+<li><p>​        of 可 遍历arguments类数组对象   Nolist这类DOM结合    Map  Set </p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="实现深拷贝"><a href="#实现深拷贝" class="headerlink" title="实现深拷贝"></a>实现深拷贝</h2><h2 id="new运算符做了什么？"><a href="#new运算符做了什么？" class="headerlink" title="new运算符做了什么？"></a>new运算符做了什么？</h2><h1 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h1><h2 id="computed-与watch-有什么区别"><a href="#computed-与watch-有什么区别" class="headerlink" title="computed 与watch 有什么区别?"></a>computed 与watch 有什么区别?</h2><h2 id="v-for的key是用来做什么的？"><a href="#v-for的key是用来做什么的？" class="headerlink" title="v-for的key是用来做什么的？"></a>v-for的key是用来做什么的？</h2><h2 id="数据请求在生命周期哪一阶段？"><a href="#数据请求在生命周期哪一阶段？" class="headerlink" title="数据请求在生命周期哪一阶段？"></a>数据请求在生命周期哪一阶段？</h2>
       
     </div>
     
@@ -523,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#css"><span class="nav-number">1.</span> <span class="nav-text">css</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：1的div"><span class="nav-number">1.1.</span> <span class="nav-text">1：1的div</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BFC"><span class="nav-number">1.2.</span> <span class="nav-text">BFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#div的高度"><span class="nav-number">1.3.</span> <span class="nav-text">div的高度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清除浮动"><span class="nav-number">1.4.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水平居中"><span class="nav-number">1.5.</span> <span class="nav-text">水平居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#块内元素"><span class="nav-number">1.5.1.</span> <span class="nav-text">块内元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块状元素"><span class="nav-number">1.5.2.</span> <span class="nav-text">块状元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直居中"><span class="nav-number">1.6.</span> <span class="nav-text">垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#行内元素"><span class="nav-number">1.6.1.</span> <span class="nav-text">行内元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块级元素"><span class="nav-number">1.6.2.</span> <span class="nav-text">块级元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圣杯布局"><span class="nav-number">1.7.</span> <span class="nav-text">圣杯布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两栏布局"><span class="nav-number">1.8.</span> <span class="nav-text">两栏布局</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js"><span class="nav-number">2.</span> <span class="nav-text">js</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#html"><span class="nav-number">1.</span> <span class="nav-text">html</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对语义化的理解？"><span class="nav-number">1.1.</span> <span class="nav-text">对语义化的理解？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css"><span class="nav-number">2.</span> <span class="nav-text">css</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：1的div"><span class="nav-number">2.1.</span> <span class="nav-text">1：1的div</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS实现三角形"><span class="nav-number">2.2.</span> <span class="nav-text">CSS实现三角形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外边距合并"><span class="nav-number">2.3.</span> <span class="nav-text">外边距合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BFC"><span class="nav-number">2.4.</span> <span class="nav-text">BFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#div的高度"><span class="nav-number">2.5.</span> <span class="nav-text">div的高度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清除浮动"><span class="nav-number">2.6.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水平居中"><span class="nav-number">2.7.</span> <span class="nav-text">水平居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#块内元素"><span class="nav-number">2.7.1.</span> <span class="nav-text">块内元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块状元素"><span class="nav-number">2.7.2.</span> <span class="nav-text">块状元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直居中"><span class="nav-number">2.8.</span> <span class="nav-text">垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#行内元素"><span class="nav-number">2.8.1.</span> <span class="nav-text">行内元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块级元素"><span class="nav-number">2.8.2.</span> <span class="nav-text">块级元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圣杯布局"><span class="nav-number">2.9.</span> <span class="nav-text">圣杯布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两栏布局"><span class="nav-number">2.10.</span> <span class="nav-text">两栏布局</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js"><span class="nav-number">3.</span> <span class="nav-text">js</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转换机制"><span class="nav-number">3.1.</span> <span class="nav-text">==转换机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组方法"><span class="nav-number">3.2.</span> <span class="nav-text">数组方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-of-for-in-区别"><span class="nav-number">3.3.</span> <span class="nav-text">for of for in 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现深拷贝"><span class="nav-number">3.4.</span> <span class="nav-text">实现深拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new运算符做了什么？"><span class="nav-number">3.5.</span> <span class="nav-text">new运算符做了什么？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue"><span class="nav-number">4.</span> <span class="nav-text">vue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#computed-与watch-有什么区别"><span class="nav-number">4.1.</span> <span class="nav-text">computed 与watch 有什么区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v-for的key是用来做什么的？"><span class="nav-number">4.2.</span> <span class="nav-text">v-for的key是用来做什么的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据请求在生命周期哪一阶段？"><span class="nav-number">4.3.</span> <span class="nav-text">数据请求在生命周期哪一阶段？</span></a></li></ol></li></ol></div>
             
 
           </div>
