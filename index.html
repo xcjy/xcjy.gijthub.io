@@ -429,20 +429,45 @@
 </ol>
 </li>
 </ol>
-<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><h2 id="转换机制"><a href="#转换机制" class="headerlink" title="==转换机制"></a>==转换机制</h2><p>简单来说，就是住哪换为数字再进行比较，引用类型也转换成简单类型。再转换为数字进行比较。</p>
-<h2 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h2><p>改变数组本来的方法   push pop shift unshift  sort splice reverse</p>
+<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><h2 id="说说作用域"><a href="#说说作用域" class="headerlink" title="说说作用域"></a>说说作用域</h2><p>1.作用域指的是变量存在的范围。有全局作用域、函数作用域、ES6新增加的会块级作用域。</p>
+<p>2.存在变量提升</p>
+<ol start="3">
+<li><p>函数本身也是一个值，也有自己的作用域 </p>
+<p>总之，函数执行时所在的作用域，是定义时的作用域，而不是调用时所在的作用域。</p>
+</li>
+</ol>
+<h2 id="说说闭包"><a href="#说说闭包" class="headerlink" title="说说闭包"></a>说说闭包</h2><p>闭包，就是能够读取其它函数内部变量的函数。</p>
+<p>闭包的两个用处：</p>
+<p>​       1.读取函数内部的变量</p>
+<pre><code>2.  让变量一直保存在内存中 （不会在调用结束后 ， 被垃圾回收机制回收）
+</code></pre><h2 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h2><p>目的： 1. 不必为函数命名 避免污染全局变量</p>
+<ol start="2">
+<li>内部形成一个单独的作用域  可以封装一些外部无法读取的变量。</li>
+</ol>
+<h2 id="转换为真正的数组"><a href="#转换为真正的数组" class="headerlink" title="转换为真正的数组"></a>转换为真正的数组</h2><p>Array.prototype.slice.call(arguments)</p>
+<p>Array.from(arguments)</p>
+<h2 id="存取器"><a href="#存取器" class="headerlink" title="存取器"></a>存取器</h2><p>一旦对目标属性定义了存取器，那么存取的时候，都将执行对应的函数。利用这个功能，可以实现许多高级特性，比如某个属性禁止赋值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var obj = Object.defineProperty(&#123;&#125;, &apos;p&apos;, &#123;</span><br><span class="line">  get: function () &#123;</span><br><span class="line">    return &apos;getter&apos;;</span><br><span class="line">  &#125;,</span><br><span class="line">  set: function (value) &#123;</span><br><span class="line">    console.log(&apos;setter: &apos; + value);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">obj.p // &quot;getter&quot;</span><br><span class="line">obj.p = 123 // &quot;setter: 123&quot;</span><br></pre></td></tr></table></figure>
+<p>另一种写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  get p() &#123;</span><br><span class="line">    return &apos;getter&apos;;</span><br><span class="line">  &#125;,</span><br><span class="line">  set p(value) &#123;</span><br><span class="line">    console.log(&apos;setter: &apos; + value);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="转换机制"><a href="#转换机制" class="headerlink" title="==转换机制"></a>==转换机制</h2><p>简单来说，就是住哪换为数字再进行比较，引用类型也转换成简单类型。再转换为数字进行比较。</p>
+<h2 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h2><p>spiice 删除并添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.splice(start, count, addElement1, addElement2, ...);</span><br></pre></td></tr></table></figure>
+<p>改变数组本来的方法   push pop shift unshift  sort splice reverse</p>
 <p>不改变数组本来的方法    some every  join   concat reduce filter  map  slice</p>
 <h2 id="for-of-for-in-区别"><a href="#for-of-for-in-区别" class="headerlink" title="for of for in 区别"></a>for of for in 区别</h2><ol>
 <li><p>for of  遍历的是值                 for in  是键</p>
 <ol start="2">
 <li><p>for  in  遍历数组  会遍历到它原本的属性  如 array.foo=3</p>
 </li>
+<li><p>for in 它遍历的是对象所有可遍历（enumerable）的属性，会跳过不可遍历的属性。</p>
+</li>
 <li><p>​        of 可 遍历arguments类数组对象   Nolist这类DOM结合    Map  Set </p>
 </li>
 </ol>
 </li>
 </ol>
-<h2 id="实现深拷贝"><a href="#实现深拷贝" class="headerlink" title="实现深拷贝"></a>实现深拷贝</h2><h2 id="手写事件委托"><a href="#手写事件委托" class="headerlink" title="手写事件委托"></a>手写事件委托</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var ul= document.getElementsByTagName(&apos;ul&apos;)</span><br><span class="line">ul[0].addEventListener(&apos;click&apos;,(ev)=&gt;&#123;      //event属性提供了一个属性叫target 可以获取当前事件操作的DOM</span><br><span class="line">    var target= ev.target</span><br><span class="line">    if(target.nodeName.toLowerCase()==&apos;li&apos;)&#123; //返回的是大写的 转换成小写</span><br><span class="line">        alert(target.innerHTML)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="实现深拷贝"><a href="#实现深拷贝" class="headerlink" title="实现深拷贝"></a>实现深拷贝</h2><h2 id="手写事件委托"><a href="#手写事件委托" class="headerlink" title="手写事件委托"></a>手写事件委托</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var ul= document.getElementsByTagName(&apos;ul&apos;)</span><br><span class="line">ul[0].addEventListener(&apos;click&apos;,(ev)=&gt;&#123;      //event属性提供了一个属性叫target 可以获取当前事件操作的DOM</span><br><span class="line">    if(ev.target.tagName.toLowerCase()==&apos;li&apos;)&#123; //返回的是大写的 转换成小写</span><br><span class="line">        alert(ev.target.innerHTML)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h2 id="闭包作用，应用场景"><a href="#闭包作用，应用场景" class="headerlink" title="闭包作用，应用场景"></a>闭包作用，应用场景</h2><h2 id="箭头函数的特性"><a href="#箭头函数的特性" class="headerlink" title="箭头函数的特性"></a>箭头函数的特性</h2><ul>
 <li>this指向的是上下文的this ，不能用call.apply改变</li>
 <li>不绑定arguments 取而代之用 rest参数… 代替</li>
@@ -450,6 +475,22 @@
 <li>没有原型属性</li>
 </ul>
 <h2 id="new运算符做了什么，实现一个new？"><a href="#new运算符做了什么，实现一个new？" class="headerlink" title="new运算符做了什么，实现一个new？"></a>new运算符做了什么，实现一个new？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function myNew(Con,...args)&#123;</span><br><span class="line">    // 若没有参数 则获取构造函数 var con= [].shift.call(arguments)</span><br><span class="line">    // args= [].slice.call(arguments)</span><br><span class="line">    var obj= Object.create(Con.prototype)</span><br><span class="line">    var result=Con.apply(obj,args)</span><br><span class="line">    return typeof result===&apos;object&apos;?result:obj </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ES5模块实现"><a href="#ES5模块实现" class="headerlink" title="ES5模块实现"></a>ES5模块实现</h2><p>模块就是将实现特定功能的一组属性和方法的封装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. 基本实现，把模块写成一个对象。但模块成员外部可以改写</span><br><span class="line">var module1 = new Object(&#123;</span><br><span class="line">　_count : 0,</span><br><span class="line">　m1 : function ()&#123;</span><br><span class="line">　　//...</span><br><span class="line">　&#125;,</span><br><span class="line">　m2 : function ()&#123;</span><br><span class="line">  　//...</span><br><span class="line">　&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>立即执行函数写法，将属性和方法封装在一个函数作用里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var module1= !function()&#123;</span><br><span class="line">    var count_=0;</span><br><span class="line">    var m1=function()&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    var m2=function()&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;</span><br><span class="line">        m1: m1;</span><br><span class="line">        m2: m2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="事件模型"><a href="#事件模型" class="headerlink" title="事件模型"></a>事件模型</h2><p>一个事件发生后，会在子元素和父元素之间传播（propagation）。这种传播分成三个阶段。</p>
+<ul>
+<li><strong>第一阶段</strong>：从<code>window</code>对象传导到目标节点（上层传到底层），称为“捕获阶段”（capture phase）。</li>
+<li><strong>第二阶段</strong>：在目标节点上触发，称为“目标阶段”（target phase）。</li>
+<li><strong>第三阶段</strong>：从目标节点传导回<code>window</code>对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。</li>
+</ul>
+<h2 id="防抖-debounce"><a href="#防抖-debounce" class="headerlink" title="防抖(debounce)"></a>防抖(debounce)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function debounce(fn,delay)&#123;</span><br><span class="line">    var timer=null;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        var context=this</span><br><span class="line">        var args= arguments</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">        timer=setTimeout( function()&#123;</span><br><span class="line">            fn.apply(context,args)</span><br><span class="line">        &#125;,delay)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function throttle(fn,wait)&#123;</span><br><span class="line">    var time=Date.now()</span><br><span class="line">    return function()&#123;</span><br><span class="line">        if(time+wait&lt;Date.now())&#123;</span><br><span class="line">            fn()</span><br><span class="line">            time=Date.now()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 防抖是多少时间内执行一次，  节流是每隔多少时间执行一次。</p>
 <h2 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h2><h2 id="computed-与watch-有什么区别"><a href="#computed-与watch-有什么区别" class="headerlink" title="computed 与watch 有什么区别?"></a>computed 与watch 有什么区别?</h2><h2 id="v-for的key是用来做什么的？"><a href="#v-for的key是用来做什么的？" class="headerlink" title="v-for的key是用来做什么的？"></a>v-for的key是用来做什么的？</h2><h2 id="数据请求在生命周期哪一阶段？"><a href="#数据请求在生命周期哪一阶段？" class="headerlink" title="数据请求在生命周期哪一阶段？"></a>数据请求在生命周期哪一阶段？</h2>
           
         
