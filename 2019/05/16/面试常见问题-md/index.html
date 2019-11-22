@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="cjy">
 <meta property="og:description" content="html对语义化的理解？css1：1的div1234.one&amp;#123;    border:1px solid red    padding-top: 100%   // 相对的是自己得宽度&amp;#125; CSS实现三角形.triangle{ ​    width:0;​    height:0;    border-right: 100px solid yellow;    border-lef">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-24T16:22:53.271Z">
+<meta property="og:updated_time" content="2019-10-19T19:27:19.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试常见问题.md">
 <meta name="twitter:description" content="html对语义化的理解？css1：1的div1234.one&amp;#123;    border:1px solid red    padding-top: 100%   // 相对的是自己得宽度&amp;#125; CSS实现三角形.triangle{ ​    width:0;​    height:0;    border-right: 100px solid yellow;    border-lef">
@@ -310,10 +310,17 @@
 <p>.triangle{<br>    width:0;<br>    height:0;</p>
 <p>   border-right: 100px solid yellow;<br>  border-top: 100px solid transparent;</p>
 <p>}</p>
-<h2 id="外边距合并"><a href="#外边距合并" class="headerlink" title="外边距合并"></a>外边距合并</h2><ol>
-<li>margin-bottom 与margin-top合并  只存在垂直方向上的合并</li>
-<li>相邻元素合并 </li>
-<li>父子元素合并，条件：父元素没有设置padding border  content</li>
+<h2 id="外边距合并"><a href="#外边距合并" class="headerlink" title="外边距合并"></a>外边距合并</h2><p>注意<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/float" target="_blank" rel="noopener">浮动元素</a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#absolute" target="_blank" rel="noopener">绝对定位元素</a>的外边距不会折叠</p>
+<ol>
+<li><p>margin-bottom 与margin-top合并  只存在垂直方向上的合并</p>
+<p>3种情况</p>
+</li>
+<li><p>相邻元素合并 </p>
+</li>
+<li><p>父子元素合并，条件：父元素没有设置padding border  content</p>
+</li>
+<li><p>一个空的元素 在 margin-top与margin-bottom 之间没有边框 边距 内容height 之间将两者分开</p>
+</li>
 </ol>
 <h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><ol>
 <li><p><strong>创建方法：</strong> </p>
@@ -334,11 +341,9 @@
 <p>爷爷管爸爸  爸爸管儿子的话  爷爷就不管儿子了</p>
 <p>功能</p>
 <ol>
-<li><p>用BFC包住浮动元素 。包裹 子元素的floa</p>
-</li>
-<li><p>兄弟之间划清界限。防止与浮动元素重叠</p>
-<p>用float+ div做左右自适应布局</p>
-</li>
+<li>用BFC包住浮动元素 。包裹 子元素的float  解决塌陷问题</li>
+<li>兄弟之间划清界限。防止与浮动元素重叠    </li>
+<li>可以打</li>
 </ol>
 <h2 id="div的高度"><a href="#div的高度" class="headerlink" title="div的高度"></a>div的高度</h2><p>字体设计： 不同字体， 行高不同</p>
 <p><strong>内联元素</strong> 高度由行高决定   宽度 ： 内容+padding+margin</p>
@@ -488,7 +493,7 @@
 <li><strong>第三阶段</strong>：从目标节点传导回<code>window</code>对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。</li>
 </ul>
 <h2 id="防抖-debounce"><a href="#防抖-debounce" class="headerlink" title="防抖(debounce)"></a>防抖(debounce)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function debounce(fn,delay)&#123;</span><br><span class="line">    var timer=null;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        var context=this</span><br><span class="line">        var args= arguments</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">        timer=setTimeout( function()&#123;</span><br><span class="line">            fn.apply(context,args)</span><br><span class="line">        &#125;,delay)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function throttle(fn,wait)&#123;</span><br><span class="line">    var time=Date.now()</span><br><span class="line">    return function()&#123;</span><br><span class="line">        if(time+wait&lt;Date.now())&#123;</span><br><span class="line">            fn()</span><br><span class="line">            time=Date.now()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function throttle(fn,wait)&#123;</span><br><span class="line">    let canRun=true;</span><br><span class="line">    return function()&#123;</span><br><span class="line">           if(!canRun)&#123;</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        canRun=false;</span><br><span class="line">     </span><br><span class="line">        setTimeout(()=&gt;&#123;</span><br><span class="line">            canRun=true</span><br><span class="line">            fn(this,arguments)</span><br><span class="line">        &#125;,1000)</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> 防抖是多少时间内执行一次，  节流是每隔多少时间执行一次。</p>
 <h2 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h2><h2 id="computed-与watch-有什么区别"><a href="#computed-与watch-有什么区别" class="headerlink" title="computed 与watch 有什么区别?"></a>computed 与watch 有什么区别?</h2><h2 id="v-for的key是用来做什么的？"><a href="#v-for的key是用来做什么的？" class="headerlink" title="v-for的key是用来做什么的？"></a>v-for的key是用来做什么的？</h2><h2 id="数据请求在生命周期哪一阶段？"><a href="#数据请求在生命周期哪一阶段？" class="headerlink" title="数据请求在生命周期哪一阶段？"></a>数据请求在生命周期哪一阶段？</h2>
       
@@ -523,6 +528,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/16/移动端开发比WEB端多了什么？/" rel="prev" title="移动端开发比WEB端多了什么？">
+                移动端开发比WEB端多了什么？ <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -599,7 +608,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

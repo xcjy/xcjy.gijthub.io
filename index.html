@@ -229,6 +229,267 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/typescript学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cjy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cjy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/21/typescript学习笔记/" itemprop="url">typescript学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-21T16:28:03+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>入门教程：<a href="https://ts.xcatliu.com/engineering/lint" target="_blank" rel="noopener">https://ts.xcatliu.com/engineering/lint</a></p>
+<h1 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h1><p>void  返回值为空 如果为赋值 则只能赋null 与undefined </p>
+<p>let  string     等价于  let string :any  </p>
+<p>null 和undefined是所有类型的子类型，可赋值给其他所有类型。</p>
+<p>如 let  num: number= undefined</p>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>TypeScript 中的接口是一个非常灵活的概念，</p>
+<p>1.除了可用于<a href>对类的一部分行为进行抽象</a>以外，即规定类里有什么方法</p>
+<p>2.<strong>也常用于对「对象的形状（Shape）」进行描述。</strong></p>
+<p>3.可以定义函数打形状。</p>
+<p>需要注意的是，<strong>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集</strong>：（？表示可有可无）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface Person &#123;</span><br><span class="line">    name: string;</span><br><span class="line">    age?: number;</span><br><span class="line">    [propName: string]: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let tom: Person = &#123;</span><br><span class="line">    name: &apos;Tom&apos;,</span><br><span class="line">    age: 25,</span><br><span class="line">    gender: &apos;male&apos;</span><br><span class="line">&#125;;    报错</span><br></pre></td></tr></table></figure>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>一个比较常见的做法是，用 <code>any</code> 表示数组中允许出现任意类型：</p>
+<p><code>arguments</code> 实际上是一个类数组，不能用普通的数组的方式来描述，而应该用接口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let fibonacci: number[] = [1, &apos;1&apos;, 2, 3, 5];</span><br><span class="line">let fibonacci: Array&lt;number&gt; = [1, 1, 2, 3, 5];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function sum() &#123;</span><br><span class="line">    let args: &#123;</span><br><span class="line">        [index: number]: number;</span><br><span class="line">        length: number;</span><br><span class="line">        callee: Function;</span><br><span class="line">    &#125; = arguments;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let list: any[] = [&apos;xcatliu&apos;, 25, &#123; website: &apos;http://xcatliu.com&apos; &#125;];</span><br></pre></td></tr></table></figure>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let mySum = function (x: number, y: number): number &#123;</span><br><span class="line">    return x + y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这是可以通过编译的，不过事实上，上面的代码只对等号右侧的匿名函数进行了类型定义，而等号左边的 <code>mySum</code>，是通过赋值操作进行类型推论而推断出来的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let mysum:（x:number,y:number）=&gt; number   </span><br><span class="line">=  function(x:nu mber,y:number)&#123;</span><br><span class="line">    return x+y</span><br><span class="line">&#125;</span><br><span class="line">注意不要混淆了 TypeScript 中的 =&gt; 和 ES6 中的 =&gt;。</span><br><span class="line">在 TypeScript 的类型定义中，=&gt; 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。</span><br></pre></td></tr></table></figure>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。</p>
+<p>T也可以是个接口，相当于限制了参数</p>
+<p>function createArray<t>(length: number, value: T): Array<t> {<br>    let result: T[] = [];<br>    for (let i = 0; i &lt; length; i++) {<br>        result[i] = value;<br>    }<br>    return result;<br>}</t></t></p>
+<p>createArray(3, ‘x’); // [‘x’, ‘x’, ‘x’]</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/16/移动端开发比WEB端多了什么？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cjy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cjy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/16/移动端开发比WEB端多了什么？/" itemprop="url">移动端开发比WEB端多了什么？</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T16:52:41+08:00">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="meta-viewport"><a href="#meta-viewport" class="headerlink" title="meta viewport"></a>meta viewport</h1>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/面试常见问题-md/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -311,10 +572,17 @@
 <p>.triangle{<br>    width:0;<br>    height:0;</p>
 <p>   border-right: 100px solid yellow;<br>  border-top: 100px solid transparent;</p>
 <p>}</p>
-<h2 id="外边距合并"><a href="#外边距合并" class="headerlink" title="外边距合并"></a>外边距合并</h2><ol>
-<li>margin-bottom 与margin-top合并  只存在垂直方向上的合并</li>
-<li>相邻元素合并 </li>
-<li>父子元素合并，条件：父元素没有设置padding border  content</li>
+<h2 id="外边距合并"><a href="#外边距合并" class="headerlink" title="外边距合并"></a>外边距合并</h2><p>注意<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/float" target="_blank" rel="noopener">浮动元素</a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#absolute" target="_blank" rel="noopener">绝对定位元素</a>的外边距不会折叠</p>
+<ol>
+<li><p>margin-bottom 与margin-top合并  只存在垂直方向上的合并</p>
+<p>3种情况</p>
+</li>
+<li><p>相邻元素合并 </p>
+</li>
+<li><p>父子元素合并，条件：父元素没有设置padding border  content</p>
+</li>
+<li><p>一个空的元素 在 margin-top与margin-bottom 之间没有边框 边距 内容height 之间将两者分开</p>
+</li>
 </ol>
 <h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><ol>
 <li><p><strong>创建方法：</strong> </p>
@@ -335,11 +603,9 @@
 <p>爷爷管爸爸  爸爸管儿子的话  爷爷就不管儿子了</p>
 <p>功能</p>
 <ol>
-<li><p>用BFC包住浮动元素 。包裹 子元素的floa</p>
-</li>
-<li><p>兄弟之间划清界限。防止与浮动元素重叠</p>
-<p>用float+ div做左右自适应布局</p>
-</li>
+<li>用BFC包住浮动元素 。包裹 子元素的float  解决塌陷问题</li>
+<li>兄弟之间划清界限。防止与浮动元素重叠    </li>
+<li>可以打</li>
 </ol>
 <h2 id="div的高度"><a href="#div的高度" class="headerlink" title="div的高度"></a>div的高度</h2><p>字体设计： 不同字体， 行高不同</p>
 <p><strong>内联元素</strong> 高度由行高决定   宽度 ： 内容+padding+margin</p>
@@ -489,7 +755,7 @@
 <li><strong>第三阶段</strong>：从目标节点传导回<code>window</code>对象（从底层传回上层），称为“冒泡阶段”（bubbling phase）。</li>
 </ul>
 <h2 id="防抖-debounce"><a href="#防抖-debounce" class="headerlink" title="防抖(debounce)"></a>防抖(debounce)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function debounce(fn,delay)&#123;</span><br><span class="line">    var timer=null;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        var context=this</span><br><span class="line">        var args= arguments</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">        timer=setTimeout( function()&#123;</span><br><span class="line">            fn.apply(context,args)</span><br><span class="line">        &#125;,delay)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function throttle(fn,wait)&#123;</span><br><span class="line">    var time=Date.now()</span><br><span class="line">    return function()&#123;</span><br><span class="line">        if(time+wait&lt;Date.now())&#123;</span><br><span class="line">            fn()</span><br><span class="line">            time=Date.now()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function throttle(fn,wait)&#123;</span><br><span class="line">    let canRun=true;</span><br><span class="line">    return function()&#123;</span><br><span class="line">           if(!canRun)&#123;</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        canRun=false;</span><br><span class="line">     </span><br><span class="line">        setTimeout(()=&gt;&#123;</span><br><span class="line">            canRun=true</span><br><span class="line">            fn(this,arguments)</span><br><span class="line">        &#125;,1000)</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> 防抖是多少时间内执行一次，  节流是每隔多少时间执行一次。</p>
 <h2 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h2><h2 id="computed-与watch-有什么区别"><a href="#computed-与watch-有什么区别" class="headerlink" title="computed 与watch 有什么区别?"></a>computed 与watch 有什么区别?</h2><h2 id="v-for的key是用来做什么的？"><a href="#v-for的key是用来做什么的？" class="headerlink" title="v-for的key是用来做什么的？"></a>v-for的key是用来做什么的？</h2><h2 id="数据请求在生命周期哪一阶段？"><a href="#数据请求在生命周期哪一阶段？" class="headerlink" title="数据请求在生命周期哪一阶段？"></a>数据请求在生命周期哪一阶段？</h2>
           
@@ -2507,170 +2773,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/03/html-css学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cjy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cjy">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/03/html-css学习/" itemprop="url">html css学习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T17:07:46+08:00">
-                2019-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="html标签"><a href="#html标签" class="headerlink" title="html标签"></a>html标签</h1><p><code>&lt;q&gt; 引用&lt;/q&gt; 自带双引号</code><br><code>&lt;blockquote&gt;&lt;/blockquote&gt;  长文本引用缩进</code>  </p>
-<p><code>&amp;nbsp; 要加分号</code><br><code>&lt;br /&gt; 空格</code>  </p>
-<p><code>&lt;hr /&gt;分割线</code><br><code>&lt;address&gt;地址</code><br><code>&lt;code&gt;</code><br><code>&lt;pre&gt;</code>代码段  </p>
-<p><code>&lt;ul&gt;&lt;li&gt; 我的第一个列表信息 无序 &lt;/li&gt;&lt;/ul&gt;</code><br><code>&lt;ol&gt; &lt;li&gt;有序&lt;/li&gt; &lt;/ol&gt;</code>  </p>
-<p><code>&lt;table&gt; &lt;/table&gt;</code><br><code>&lt;tr&gt; 行</code> <code>&lt;td&gt;列</code><br><code>&lt;tbody&gt;表格分段可以一部分显示不在等待整个表格加载完显示&lt;tbody</code><br><code>table tr td,th{border:1px solid #000;}表格加边框</code><br><code>&lt;table summary=&quot;&quot;&gt; 摘要</code><br><code>&lt;caption&gt;表格标题</code><br><code>&lt;a href=&quot;&quot; title=&quot;&quot; target=&quot;_blank&quot; &gt; //target在新的浏览器打开</code></p>
-<p><code>&lt;a href=mailto:yy@imooc.com?subject=&quot;观了不起的盖茨比有感&quot;&amp;body=&quot;你好，对此评论有些想法&quot;&gt;对此影评有何感想，发送邮件给我&lt;/a&gt;</code>  </p>
-<p><code>&lt;form method=&quot;post action=&quot;save.php&quot;&gt; 表单&lt;/form&gt;</code><br><code>&lt;input type=&quot;&quot; name=&quot;&quot; value=&quot;&quot;&gt;</code><br>type=text/password/radio/checkbox/submit/reset<br><code>&lt;textarea cols=&quot;列&quot; rows=&quot;行&quot;&gt;</code>可被css用row height代替    </p>
-<p>同一组radio name要一致。<br><code>&lt;select&gt; &lt;option value=&quot;&quot;selected=&quot;selected&gt; 看书&lt;/option&gt; &lt;/select&gt;</code><br>multiple=”multiple”让select多选 ctrl+单击</p>
-<p><label for="控件id">当用户单击选中该label标签时，浏览器就会自动将焦点转到和标签相关的表单控件上（就自动选中和该label标签相关连的表单控件上）</label></p>
-<h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CSS样式代码分为： 内联式、嵌入式和外部式三种</span><br><span class="line">`&lt;link href=&quot;style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;`</span><br><span class="line">优先级 :  内联式 &gt; 嵌入式 &gt; 外部式</span><br></pre></td></tr></table></figure>
-<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><p>标签选择器<br>类选择器(class) <code>xxx.{}</code><br>ID选择器 (id) <code>#xxx{}</code><br>子选择器 <code>.food&gt;li{ border:1px solid red;}</code> //  &gt;表示  直接后代<br>包含（后代）选择器<code>.first span{color:red}</code> //全部后代  空格表示<br>通用选择器 *{}<br>伪类选择符 a:hover{}<br>分组选择器  h1,span{}</p>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有的属性不能被继承 如p&#123;&#125;  &lt;p&gt;&lt;span&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="特殊性-层叠"><a href="#特殊性-层叠" class="headerlink" title="特殊性 层叠"></a>特殊性 层叠</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">标签的权值为1 类选择器的权值为10 ID选择符的权值最高为100. 相同权重值时，后面的会覆盖前面的</span><br><span class="line">p&#123;color:red!important;&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="文字排版"><a href="#文字排版" class="headerlink" title="文字排版"></a>文字排版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">font-size:20px  font-family:&quot;宋体&quot;</span><br><span class="line">font-style:italic 斜体</span><br><span class="line">text-decoration:underline 下划线</span><br><span class="line">text-decoration:line-through 删除线 </span><br><span class="line">text-indent:2em  缩进 2em 文字的2倍大小 </span><br><span class="line">line-height:1.5em   //行距</span><br><span class="line">letter-spacing：50px //文字间距或字母间距</span><br><span class="line">word-spacing  // 英文单词  间距</span><br><span class="line">text-align:center //对齐</span><br></pre></td></tr></table></figure>
-<h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><h2 id="元素分类"><a href="#元素分类" class="headerlink" title="元素分类"></a>元素分类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">css中 将html标签元素分为三类：块状元素、内联元素（行内元素）、内敛块状元素。</span><br><span class="line">常用的块状元素有：</span><br><span class="line">&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;...&lt;h6&gt;、&lt;ol&gt;、&lt;ul&gt;、&lt;dl&gt;、&lt;table&gt;、&lt;address&gt;、&lt;blockquote&gt; 、&lt;form&gt;</span><br><span class="line">常用的内联元素有：</span><br><span class="line">&lt;a&gt;、&lt;span&gt;、&lt;br&gt;、&lt;i&gt;、&lt;em&gt;、&lt;strong&gt;、&lt;label&gt;、&lt;q&gt;、&lt;var&gt;、&lt;cite&gt;、&lt;code&gt;</span><br><span class="line">常用的内联块状元素有：</span><br><span class="line">&lt;img&gt;、&lt;input&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a&#123;display:block;&#125; //将内联元素a 转换为块状元素</span><br><span class="line">块级元素特点：</span><br><span class="line"></span><br><span class="line">1、每个块级元素都从新的一行开始，并且其后的元素也另起一行。（真霸道，一个块级元素独占一行）</span><br><span class="line"></span><br><span class="line">2、元素的高度、宽度、行高以及顶和底边距都可设置。</span><br><span class="line"></span><br><span class="line">3、元素宽度在不设置的情况下，是它本身父容器的100%（和父元素的宽度一致），除非设定一个宽度。</span><br></pre></td></tr></table></figure>
-<h3 id="内联元素"><a href="#内联元素" class="headerlink" title="内联元素"></a>内联元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">div&#123;display:inline&#125; //设置成内联元素</span><br><span class="line">内联元素特点：</span><br><span class="line"></span><br><span class="line">1、和其他元素都在一行上；</span><br><span class="line"></span><br><span class="line">2、元素的高度、宽度及顶部和底部边距不可设置；</span><br><span class="line"></span><br><span class="line">3、元素的宽度就是它包含的文字或图片的宽度，不可改变。</span><br></pre></td></tr></table></figure>
-<h3 id="内联块状元素"><a href="#内联块状元素" class="headerlink" title="内联块状元素"></a>内联块状元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;display:inline-block&#125;</span><br><span class="line">同时具备内联元素，块状元素的特点</span><br></pre></td></tr></table></figure>
-<h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">块级标签，比如&lt;div&gt;&lt;ul&gt;&lt;ol&gt;&lt;p&gt;&lt;h&gt;&lt;table&gt;，都具有盒子模型的特征。</span><br><span class="line"></span><br><span class="line">边框border</span><br><span class="line">div&#123;border:2px solid red&#125;可写成</span><br><span class="line">div&#123;</span><br><span class="line">    border-width:2px;</span><br><span class="line">    border-style:solid;</span><br><span class="line">    border-color:red;</span><br><span class="line">&#125;</span><br><span class="line">border-style常见样式有dashed(虚线) dotted(点线)solid(实线)</span><br><span class="line">可以只给一边设置 eg:border-bottom</span><br><span class="line"></span><br><span class="line">内容与边框之间 称为填充 padding</span><br><span class="line">div&#123;padding:20px 10px 15px 30px&#125; 上右下左</span><br><span class="line">或写成</span><br><span class="line">div&#123;</span><br><span class="line">   padding-top:20px;</span><br><span class="line">   padding-right:10px;</span><br><span class="line">   padding-bottom:15px;</span><br><span class="line">   padding-left:30px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">边界 margin</span><br><span class="line">总结：padding在边框里，margin在边框外。</span><br></pre></td></tr></table></figure>
-<p>盒模型代码缩写<br>1.上下左右相同   写一个就行<br>2.上下相同           写两个<br>3.左右相同         写三个。</p>
-<h2 id="CSS布局模型"><a href="#CSS布局模型" class="headerlink" title="CSS布局模型"></a>CSS布局模型</h2><p>Flow流动、Layer浮动 和 Float层模型</p>
-<h3 id="流动模型Flow"><a href="#流动模型Flow" class="headerlink" title="流动模型Flow"></a>流动模型Flow</h3><p>两个特征： （默认布局）<br>1.块状元素 默认宽度100% 以行的形式占据位置</p>
-<ol start="2">
-<li>内联元素从左到右水平分布显示<h3 id="浮动模型Float"><a href="#浮动模型Float" class="headerlink" title="浮动模型Float"></a>浮动模型Float</h3>设置元素为浮动  可以将流动模型占据一行变为一行显示。。<br>div{<br> float:left<br>}<h3 id="层模型Layer"><a href="#层模型Layer" class="headerlink" title="层模型Layer"></a>层模型Layer</h3>1.绝对定位 position:absolute<br>相对于其最接近的一个具有定位属性的 父包含块 进行绝对定位</li>
-</ol>
-<p>2.相对定位 position:relative<br>相对以前的位置<br>3.固定定位 position:fixed<br>浏览器视图向右移动100px，向下移动50px。并且拖动滚动条时位置固定不变。</p>
-<p>Relative与Absolute结合<br>1.参照定位的元素(父元素)加入positoin:relative<br>2.定位元素（子元素）加入positon:absolute  便可以相对于父元素定位</p>
-<h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><p>1.块内元素 是通过设置父元素来居中  text-align:center</p>
-<p>2 定宽、块状元素<br>marigin 左右设置为auto        &amp;&amp;定宽   max-width</p>
-<p>3 不定宽（宽度未知） 块状元素方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 加入 table 标签   ,设置table为 margin:0 auto</span><br><span class="line">2 设置 display: inline    父元素设置text-align-center</span><br><span class="line">3 设置 position:relative 和 left:50%：利用 相对定位 的方式，将元素向左偏移 50% ，即达到居中的目的</span><br></pre></td></tr></table></figure></p>
-<h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><p>父元素确定的单行文本</p>
-<ol>
-<li>设置 height 与line-height 一致<br>父元素确定的多行文本<br>方法一：插入table<br>方法二：        display:table-cell;<pre><code>vertical-align:middle;
-</code></pre></li>
-</ol>
-<h3 id="隐性改变-display"><a href="#隐性改变-display" class="headerlink" title="隐性改变 display"></a>隐性改变 display</h3><ol>
-<li><p>position : absolute </p>
-<ol start="2">
-<li>float : left 或 float:right<br>当设置两个之一时 ， 自动变成display:inline-block</li>
-</ol>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2714,7 +2823,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
