@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="cjy">
 <meta property="og:description" content="useState 不可局部更新.  局部更新要用…  12345const [user,setUser]= useState(&amp;#123;name:&amp;apos;a&amp;apos;,age:&amp;apos;18&amp;apos;&amp;#125;)setUser(&amp;#123;    ...user,    name: &amp;apos;jy&amp;apos;&amp;#125;) ​       2.地址要变,   否则改变不了  set">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-01T07:42:26.272Z">
+<meta property="og:updated_time" content="2019-12-01T16:45:20.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react hooks学习">
 <meta name="twitter:description" content="useState 不可局部更新.  局部更新要用…  12345const [user,setUser]= useState(&amp;#123;name:&amp;apos;a&amp;apos;,age:&amp;apos;18&amp;apos;&amp;#125;)setUser(&amp;#123;    ...user,    name: &amp;apos;jy&amp;apos;&amp;#125;) ​       2.地址要变,   否则改变不了  set">
@@ -338,7 +338,8 @@
 <p>useLayoutEffect在浏览器渲染前执行</p>
 <p>useLayoutEffect 的任务 最好影响了layout（外观）..</p>
 <p>为了用户体验 优先使用useEffect （优先渲染）</p>
-<h1 id="useMemo-useCallback"><a href="#useMemo-useCallback" class="headerlink" title="useMemo,useCallback"></a>useMemo,useCallback</h1><p>  React.memo 可以解决  多余的render（子组件props没变但它还是执行了） 。 如果props不变就不会再执行  但加了监听函数后还是会执行</p>
+<h1 id="useMemo-useCallback"><a href="#useMemo-useCallback" class="headerlink" title="useMemo,useCallback"></a>useMemo,useCallback</h1><p>  React.memo 可以解决  多余的render（如： 子组件props没变但它还是执行了） 。 </p>
+<p>问题：如果props不变就不会再执行  但加了监听函数后还是会执行</p>
 <p>useMemo 解决了这个问题，使函数能够重用.类似于vue的computed</p>
 <p>第一个参数是()=&gt;value ,</p>
 <p>第二个参数是依赖[m,n] 只有依赖变化时 才会计算出新的value。。</p>
