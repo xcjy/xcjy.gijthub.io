@@ -229,6 +229,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/react-hooks学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cjy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cjy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/30/react-hooks学习/" itemprop="url">react hooks学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-30T23:02:01+08:00">
+                2019-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h1><ol>
+<li><strong>不可局部更新.  局部更新要用…</strong></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const [user,setUser]= useState(&#123;name:&apos;a&apos;,age:&apos;18&apos;&#125;)</span><br><span class="line">setUser(&#123;</span><br><span class="line">    ...user,</span><br><span class="line">    name: &apos;jy&apos;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>​       <strong>2.地址要变,   否则改变不了</strong></p>
+<p> setState(obj)  obj地址如果不变，那么react就认为数据没有变化</p>
+<ol start="3">
+<li><p><strong>useState 可接受函数</strong></p>
+</li>
+<li><p><strong>setState 接受函数</strong></p>
+<p>setN(i =&gt; i+1)</p>
+</li>
+</ol>
+<h1 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h1><p>值在组件不断render时 保持不变。而useState是会变的。</p>
+<p>const count=useRef(0)</p>
+<p>读取count.current</p>
+<p>当count.value 变化时 不会自动render  vue3会自动render</p>
+<p><strong>与createRef的区别：</strong></p>
+<p>区别在于 createRef 将始终创建一个新的ref。在基于类的组件中，通常在构造期间将ref放在实例属性中（例如 this.input = createRef（））。您在功能组件中没有此选项。 useRef 负责每次返回与初始渲染时相同的ref。</p>
+<h1 id="forwardRef"><a href="#forwardRef" class="headerlink" title="forwardRef"></a>forwardRef</h1><p>由于props不包含 ref 所以需要forwardRef</p>
+<h1 id="useImperativeHandle"><a href="#useImperativeHandle" class="headerlink" title="useImperativeHandle"></a>useImperativeHandle</h1><p>应该叫setRef   </p>
+<h1 id="UseReducer"><a href="#UseReducer" class="headerlink" title="UseReducer"></a>UseReducer</h1><p>   useReducer是useState的复杂版</p>
+<p>一、<em>创建初始值initialState</em></p>
+<p>二、创建所有操作reducer(state,action)</p>
+<p>三、 传给useReducer 得到读写api</p>
+<p>​     const [n,dispatch]= useReducer(reducer,intialState)</p>
+<p>四、 调用写api     dispatch({type:’add’, payload:’xxx’})</p>
+<h1 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h1><p>  上下文是局部的全局变量</p>
+<p>一、 const xxx=createContext(initial)创建上下文</p>
+<p>二、 &lt;xxx.provider&gt;来圈定作用域</p>
+<p>三、 作用域内使用const [n,setN]=useContext(xxx)  来使用上下文</p>
+<h1 id="UseEffect"><a href="#UseEffect" class="headerlink" title="UseEffect"></a>UseEffect</h1><p>副作用：对环境的改变 如修改document.title console.log </p>
+<p><u>不一定非要把副作用放在useEffect</u></p>
+<p>用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">useEffect( ()=&gt;&#123;</span><br><span class="line">    console.log(&apos;第一次渲染之后执行这句话&apos;)</span><br><span class="line">&#125;,[]） //[]里面变化时执行 ，  空代表不执行)  相当于ComponentDidMount</span><br><span class="line"></span><br><span class="line">useEffect( ()=&gt;&#123;</span><br><span class="line">    console.log(&apos;第一次渲染之后执行这句话&apos;)</span><br><span class="line">&#125;,[n]） // n变化时执行 包括第一次渲染    相当于ComponentDidUpdate</span><br><span class="line"></span><br><span class="line">useEffect( ()=&gt;&#123;</span><br><span class="line">    console.log(&apos;第一次渲染之后执行这句话&apos;)</span><br><span class="line">&#125; ） //  不传 代表任何一个state变化时都执行 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">相当于ComponentWillUnmount</span><br><span class="line"></span><br><span class="line">useEffect( ()=&gt;&#123; return()=&gt;&#123;clearInterval(id)&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="UseLayoutEffect"><a href="#UseLayoutEffect" class="headerlink" title="UseLayoutEffect"></a>UseLayoutEffect</h2><p>useEffect浏览器渲染完成后执行</p>
+<p>useLayoutEffect在浏览器渲染前执行</p>
+<p>useLayoutEffect 的任务 最好影响了layout（外观）..</p>
+<p>为了用户体验 优先使用useEffect （优先渲染）</p>
+<h1 id="useMemo-useCallback"><a href="#useMemo-useCallback" class="headerlink" title="useMemo,useCallback"></a>useMemo,useCallback</h1><p>  React.memo 可以解决  多余的render（子组件props没变但它还是执行了） 。 如果props不变就不会再执行  但加了监听函数后还是会执行</p>
+<p>useMemo 解决了这个问题，使函数能够重用.类似于vue的computed</p>
+<p>第一个参数是()=&gt;value ,</p>
+<p>第二个参数是依赖[m,n] 只有依赖变化时 才会计算出新的value。。</p>
+<p> useMemo (   ()=&gt;(x)=&gt;console.log(x) )</p>
+<p>useCallback(x =&gt;log(x),[m] ) 等价于 useMemo(  ()=&gt;x=&gt;log(x),m)</p>
+<h1 id="数据是否要变化的hook-小结"><a href="#数据是否要变化的hook-小结" class="headerlink" title="数据是否要变化的hook  小结"></a>数据是否要变化的hook  小结</h1><p>数据是否要变化的hook,</p>
+<ol>
+<li>useState , useReducer   n 每次变化</li>
+<li>useMemo /useCallback   [m] 变时才改变</li>
+<li>useRef  永远不变。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/typescript学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2644,135 +2814,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/03/git命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cjy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cjy">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/03/git命令/" itemprop="url">git命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T17:22:15+08:00">
-                2019-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="常用git命令"><a href="#常用git命令" class="headerlink" title="常用git命令"></a>常用git命令</h1><p><img src="https://cdn.biaoyansu.com/TQDj8Uo1pj3YkMSoeSitYC1QB4a019V68N6GZFBE.png" alt="img"></p>
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>git init </p>
-<p>git add . //提交文件内容修改及新文件<br>git add -A //所有变化<br>git ad-add -u // 被修改和被删除的文件 不包括新文件</p>
-<p>git commit -m “”</p>
-<p>git state // 查看仓库状态</p>
-<h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>git log   [–oneline][ –all] //查看提交历史</p>
-<h2 id="远程"><a href="#远程" class="headerlink" title="远程"></a>远程</h2><p>git remote add origin “xxx.git”<br>git pull origin master //<br>git push -u origin master</p>
-<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>git branch name //创建分支<br>git checkout name //切换到分支<br>git checkout -b gh-pages //创建+切换分支</p>
-<p>git merge &lt;分支&gt;  //与当前分支 合并</p>
-<h2 id="回滚"><a href="#回滚" class="headerlink" title="回滚"></a>回滚</h2><p>git reset –hard </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2823,7 +2864,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
